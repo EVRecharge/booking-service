@@ -1,4 +1,4 @@
-package com.evcharging.servicebooking.dto;
+package com.evcharging.bookingservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

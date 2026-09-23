@@ -1,7 +1,7 @@
-package com.evcharging.servicebooking.controller;
+package com.evcharging.bookingservice.controller;
 
-import com.evcharging.servicebooking.dto.BookingDTO;
-import com.evcharging.servicebooking.service.BookingService;
+import com.evcharging.bookingservice.dto.BookingDTO;
+import com.evcharging.bookingservice.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

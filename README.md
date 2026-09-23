@@ -1,7 +1,7 @@
-# Service Booking - Independent Microservice
+# Booking Service - Independent Microservice
 
 ## Overview
-Service Booking manages booking creation, status updates, and cancellations for EV charging services.
+Booking Service manages booking creation, status updates, and cancellations for EV charging services.
 
 ## Service Details
 - **Port**: 8003
@@ -10,7 +10,7 @@ Service Booking manages booking creation, status updates, and cancellations for 
 
 ## Quick Start
 ```bash
-cd service-booking
+cd booking-service
 docker-compose up -d
 ```
 
@@ -56,11 +56,11 @@ curl -X POST http://localhost:8003/api/bookings \
 
 ## Deployment
 ```bash
-docker build -t service-booking:1.0.0 .
-docker push service-booking:1.0.0
+docker build -t booking-service:1.0.0 .
+docker push booking-service:1.0.0
 docker-compose up -d
 ```
 
 ## Monitoring
 - Health: http://localhost:8003/actuator/health
-- Logs: logs/service-booking.log
+- Logs: logs/booking-service.log

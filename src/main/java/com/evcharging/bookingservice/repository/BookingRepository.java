@@ -1,6 +1,6 @@
-package com.evcharging.servicebooking.repository;
+package com.evcharging.bookingservice.repository;
 
-import com.evcharging.servicebooking.entity.Booking;
+import com.evcharging.bookingservice.entity.Booking;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

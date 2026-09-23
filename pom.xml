@@ -6,12 +6,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.evcharging</groupId>
-    <artifactId>service-booking</artifactId>
+    <artifactId>booking-service</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>EV Charging - Service Booking</name>
-    <description>Independent Service Booking Microservice</description>
+    <name>EV Charging - Booking Service</name>
+    <description>Independent Booking Service Microservice</description>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>

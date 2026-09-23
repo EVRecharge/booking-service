@@ -1,4 +1,4 @@
-package com.evcharging.servicebooking;
+package com.evcharging.bookingservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

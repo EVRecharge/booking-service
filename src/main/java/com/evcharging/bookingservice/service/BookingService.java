@@ -1,8 +1,8 @@
-package com.evcharging.servicebooking.service;
+package com.evcharging.bookingservice.service;
 
-import com.evcharging.servicebooking.dto.BookingDTO;
-import com.evcharging.servicebooking.entity.Booking;
-import com.evcharging.servicebooking.repository.BookingRepository;
+import com.evcharging.bookingservice.dto.BookingDTO;
+import com.evcharging.bookingservice.entity.Booking;
+import com.evcharging.bookingservice.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -21,11 +21,11 @@ services:
       retries: 5
     restart: unless-stopped
 
-  service-booking:
+  booking-service:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: service-booking
+    container_name: booking-service
     ports:
       - "8003:8003"
     environment:
