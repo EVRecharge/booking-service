@@ -1,0 +1,17 @@
+package com.evcharging.servicebooking.repository;
+
+import com.evcharging.servicebooking.entity.Booking;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface BookingRepository extends JpaRepository<Booking, Long> {
+    List<Booking> findByUserId(Long userId);
+    List<Booking> findByProviderId(Long providerId);
+    List<Booking> findByStatus(String status);
+    List<Booking> findByUserIdAndStatus(Long userId, String status);
+    Optional<Booking> findByBookingId(Long bookingId);
+}
