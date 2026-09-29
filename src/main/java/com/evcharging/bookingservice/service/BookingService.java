@@ -1,6 +1,7 @@
 package com.evcharging.bookingservice.service;
 
 import com.evcharging.bookingservice.client.DirectoryClient;
+import com.evcharging.bookingservice.client.PaymentTriggerClient;
 import com.evcharging.bookingservice.client.ProviderContact;
 import com.evcharging.bookingservice.client.UserContact;
 import com.evcharging.bookingservice.dto.BookingDTO;
@@ -31,6 +32,9 @@ public class BookingService {
 
     @Autowired
     private NotificationService notificationService;
+
+    @Autowired
+    private PaymentTriggerClient paymentTriggerClient;
 
     public BookingDTO createBooking(BookingDTO bookingDTO) {
         Booking booking = new Booking();
@@ -76,6 +80,7 @@ public class BookingService {
         Booking savedBooking = bookingRepository.save(booking);
         if ("CONFIRMED".equals(status)) {
             notificationService.notifyUserOfApproval(savedBooking);
+            paymentTriggerClient.chargeOnConfirmation(savedBooking);
         }
         return convertToDTO(savedBooking);
     }
