@@ -1,7 +1,11 @@
 package com.evcharging.bookingservice.service;
 
+import com.evcharging.bookingservice.client.DirectoryClient;
+import com.evcharging.bookingservice.client.ProviderContact;
+import com.evcharging.bookingservice.client.UserContact;
 import com.evcharging.bookingservice.dto.BookingDTO;
 import com.evcharging.bookingservice.entity.Booking;
+import com.evcharging.bookingservice.notification.NotificationService;
 import com.evcharging.bookingservice.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +26,12 @@ public class BookingService {
     @Autowired
     private org.springframework.web.client.RestTemplate restTemplate;
 
+    @Autowired
+    private DirectoryClient directoryClient;
+
+    @Autowired
+    private NotificationService notificationService;
+
     public BookingDTO createBooking(BookingDTO bookingDTO) {
         Booking booking = new Booking();
         booking.setUserId(bookingDTO.getUserId());
@@ -39,6 +49,7 @@ public class BookingService {
         booking.setStatus("PENDING");
 
         Booking savedBooking = bookingRepository.save(booking);
+        notificationService.notifyProviderOfNewBooking(savedBooking);
         return convertToDTO(savedBooking);
     }
 
@@ -62,7 +73,11 @@ public class BookingService {
         Booking booking = bookingRepository.findByBookingId(bookingId)
                 .orElseThrow(() -> new RuntimeException("Booking not found"));
         booking.setStatus(status);
-        return convertToDTO(bookingRepository.save(booking));
+        Booking savedBooking = bookingRepository.save(booking);
+        if ("CONFIRMED".equals(status)) {
+            notificationService.notifyUserOfApproval(savedBooking);
+        }
+        return convertToDTO(savedBooking);
     }
 
     public BookingDTO cancelBooking(Long bookingId) {
